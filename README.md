@@ -1,6 +1,6 @@
 # my_app
 
-A new Flutter project.
+A new Flutter project. An app used to send chat messages using Flutter and Firebase.
 
 ## Getting Started
 
