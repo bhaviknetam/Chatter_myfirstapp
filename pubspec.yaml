@@ -41,17 +41,26 @@ dependencies:
   cloud_firestore: ^4.13.3
   firebase_auth_platform_interface: ^7.0.5
   provider:
+  rename: ^3.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
 
+flutter_launcher_icons:
+    android: 
+      generate: true
+    web: 
+      generate: true
+    image_path: "assets/logo.jpeg"
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.1
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

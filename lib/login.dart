@@ -90,90 +90,93 @@ class _MyLoginState extends State<MyLogin> {
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.4,
-                  right: 35,
-                  left: 35),
-              child: SingleChildScrollView(
-                reverse: true,
-                padding: const EdgeInsets.all(5),
-                child: Column(children: [
-                  TextField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                        fillColor: Colors.white12,
-                        filled: true,
-                        hintText: 'Email',
-                        hintStyle: GoogleFonts.montserrat(),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    controller: _passwordController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        fillColor: Colors.white12,
-                        filled: true,
-                        hintText: 'Password',
-                        hintStyle: GoogleFonts.montserrat(),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+            Center(
+              child: Container(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.4,
+                    right: 35,
+                    left: 35),
+                child: SingleChildScrollView(
+                  reverse: true,
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.width * 0.5),
+                  child: Column(children: [
+                    TextField(
+                      controller: _emailController,
+                      decoration: InputDecoration(
+                          fillColor: Colors.white12,
+                          filled: true,
+                          hintText: 'Email',
+                          hintStyle: GoogleFonts.montserrat(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          )),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          fillColor: Colors.white12,
+                          filled: true,
+                          hintText: 'Password',
+                          hintStyle: GoogleFonts.montserrat(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          )),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const ForgotPasswordPage();
+                              }));
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MyButton(onTap: signin, text: 'Sign In'),
+                    const SizedBox(height: 30),
+                    Row(
                       children: [
+                        Text(
+                          'Not a member?',
+                          style: GoogleFonts.montserrat(),
+                        ),
+                        const SizedBox(width: 3),
                         GestureDetector(
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const ForgotPasswordPage();
-                            }));
-                          },
+                          onTap: widget.onTap,
                           child: Text(
-                            'Forgot Password?',
+                            'Register here',
                             style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
+                        )
                       ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  MyButton(onTap: signin, text: 'Sign In'),
-                  const SizedBox(height: 30),
-                  Row(
-                    children: [
-                      Text(
-                        'Not a member?',
-                        style: GoogleFonts.montserrat(),
-                      ),
-                      const SizedBox(width: 3),
-                      GestureDetector(
-                        onTap: widget.onTap,
-                        child: Text(
-                          'Register here',
-                          style: GoogleFonts.montserrat(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ]),
+                    )
+                  ]),
+                ),
               ),
             )
           ],
