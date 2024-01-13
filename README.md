@@ -1,4 +1,4 @@
-# my_app
+# Chatter
 
 A new Flutter project. It is a chat messaging app using Flutter SDK. THe database used in this project is Google Firebase.
 
