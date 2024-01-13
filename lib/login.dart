@@ -99,7 +99,7 @@ class _MyLoginState extends State<MyLogin> {
                 child: SingleChildScrollView(
                   reverse: true,
                   padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.width * 0.5),
+                      top: MediaQuery.of(context).size.width * 0.1),
                   child: Column(children: [
                     TextField(
                       controller: _emailController,
