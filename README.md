@@ -6,7 +6,7 @@ A new Flutter project. It is a chat messaging app using Flutter SDK. The databas
 https://chatapp-33626.web.app/
 
 <h4>For app:</h4>
-Go to Releases section.
+Go to <a href="https://github.com/bhaviknetam/Chatter_myfirstapp/releases">Releases</a> section.
 
 ## Getting Started
 
