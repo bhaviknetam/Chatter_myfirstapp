@@ -8,8 +8,12 @@ import 'package:my_app/chat.dart';
 class ChatPage extends StatefulWidget {
   final String receiverEmail;
   final String receiverID;
+  final String username;
   const ChatPage(
-      {super.key, required this.receiverEmail, required this.receiverID});
+      {super.key,
+      required this.receiverEmail,
+      required this.receiverID,
+      required this.username});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -22,17 +26,40 @@ class _ChatPageState extends State<ChatPage> {
 
   void sendMessage() async {
     if (messageController.text.isNotEmpty) {
-      await _chatservice.sendMessage(widget.receiverID, messageController.text);
+      await _chatservice.sendMessage(
+          widget.receiverID, messageController.text, widget.username);
 
       messageController.clear();
     }
   }
 
+  final _numbertoMonthMap = {
+    1: "Jan",
+    2: "Feb",
+    3: "Mar",
+    4: "Apr",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "Aug",
+    9: "Sep",
+    10: "Oct",
+    11: "Nov",
+    12: "Dec"
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.receiverEmail),
+        backgroundColor: Colors.indigo[900],
+        foregroundColor: Colors.white,
+        title: Text(widget.username,
+            style: GoogleFonts.montserrat(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              decoration: TextDecoration.none,
+            )),
       ),
       body: Column(
         children: [
@@ -75,7 +102,8 @@ class _ChatPageState extends State<ChatPage> {
     var alignment = (data['senderId'] == _firebaseAuth.currentUser!.uid)
         ? Alignment.centerRight
         : Alignment.centerLeft;
-
+    Timestamp t = data['timestamp'] as Timestamp;
+    DateTime date = t.toDate();
     return Container(
       alignment: alignment,
       child: Padding(
@@ -90,11 +118,27 @@ class _ChatPageState extends State<ChatPage> {
                     ? MainAxisAlignment.end
                     : MainAxisAlignment.start,
             children: [
-              Text(data['senderEmail']),
+              Text(
+                (data['senderId'] == _firebaseAuth.currentUser!.uid)
+                    ? "You"
+                    : data['username'],
+              ),
               const SizedBox(
                 height: 5,
               ),
               ChatBubble(message: data['message']),
+              Text('${_numbertoMonthMap[date.month]} ${date.day} ${date.year}',
+                  style: GoogleFonts.montserrat(
+                    fontSize: 10,
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                  )),
+              Text('${date.hour}:${date.minute} ${date.timeZoneName}',
+                  style: GoogleFonts.montserrat(
+                    fontSize: 10,
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                  ))
             ]),
       ),
     );

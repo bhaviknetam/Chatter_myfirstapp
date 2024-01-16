@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:my_app/auth_gate.dart';
 import 'package:my_app/autn_service.dart';
 import 'package:provider/provider.dart';
-import 'package:rename/rename.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -67,7 +67,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 child: Column(
                   children: [
                     Text(
-                      'Reset Password',
+                      'Reset Password🤔',
                       style: GoogleFonts.montserrat(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,

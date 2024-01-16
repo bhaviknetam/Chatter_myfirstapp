@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_app/ChatPage.dart';
 import 'package:my_app/autn_service.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Home Page')),
+        title: Center(
+            child: Text('Chats',
+                style: GoogleFonts.montserrat(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  decoration: TextDecoration.none,
+                ))),
         backgroundColor: Colors.indigo[900],
         foregroundColor: Colors.white,
         actions: [
@@ -59,7 +67,13 @@ class _HomePageState extends State<HomePage> {
 
     if (_auth.currentUser!.email != data['email']) {
       return ListTile(
-        title: Text(data['email']),
+        title: Text(data['username'].toString(),
+            style: GoogleFonts.oldStandardTt(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              decoration: TextDecoration.none,
+            )),
         onTap: () {
           Navigator.push(
               context,
@@ -67,6 +81,7 @@ class _HomePageState extends State<HomePage> {
                   builder: (context) => ChatPage(
                         receiverEmail: data['email'],
                         receiverID: data['uid'],
+                        username: data['username'],
                       )));
         },
       );

@@ -19,6 +19,7 @@ class ChatBubble extends StatelessWidget {
           style: GoogleFonts.montserrat(
             fontSize: 16,
             color: Colors.white,
+            fontWeight: FontWeight.bold,
             decoration: TextDecoration.none,
           ),
         ));
